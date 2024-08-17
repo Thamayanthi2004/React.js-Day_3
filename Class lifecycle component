@@ -1,0 +1,53 @@
+// src/ClassLifecycleComponent.js
+
+import React, { Component } from 'react';
+import { Box, Text, Button, VStack, Center } from '@chakra-ui/react';
+
+class ClassLifecycleComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+  }
+
+  componentDidMount() {
+    console.log('ComponentDidMount: Component has mounted.');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('ComponentDidUpdate: Component has updated.');
+    if (prevState.count !== this.state.count) {
+      console.log(`Count has changed to ${this.state.count}`);
+    }
+  }
+
+  incrementCount = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  decrementCount = () => {
+    this.setState({ count: this.state.count - 1 });
+  };
+
+  render() {
+    return (
+      <Center height="100vh">
+        <Box p={5} borderWidth={1} borderRadius="md" maxWidth="400px" width="100%">
+          <VStack spacing={4}>
+            <Text fontSize="2xl" fontWeight="bold">Class Component</Text>
+            <Text fontSize="xl">Count: {this.state.count}</Text>
+            <Button colorScheme="teal" onClick={this.incrementCount}>
+              Increase
+            </Button>
+            <Button colorScheme="red" onClick={this.decrementCount}>
+              Decrease
+            </Button>
+          </VStack>
+        </Box>
+      </Center>
+    );
+  }
+}
+
+export default ClassLifecycleComponent;
