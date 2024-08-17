@@ -1,0 +1,38 @@
+// MyComponent.js
+
+import React, { Component } from 'react';
+import { Box, Text, Button } from '@chakra-ui/react';
+
+class MyComponent extends Component {
+  constructor(props) {
+    super(props);
+    // Initialize state
+    this.state = {
+      count: 0,
+      message: 'Hello, World!',
+    };
+  }
+
+  // Method to increment the count
+  incrementCount = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  render() {
+    return (
+      <Box p={5} borderWidth={1} borderRadius="md">
+        <Text fontSize="lg" mb={4}>
+          {this.state.message}
+        </Text>
+        <Text fontSize="xl" mb={4}>
+          Count: {this.state.count}
+        </Text>
+        <Button colorScheme="teal" onClick={this.incrementCount}>
+          Increase Count
+        </Button>
+      </Box>
+    );
+  }
+}
+
+export default MyComponent;
